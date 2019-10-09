@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'arimoregular';
+    src: url('Arimo-Regular-webfont.eot');
+    src: url('Arimo-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Arimo-Regular-webfont.woff2') format('woff2'),
+         url('Arimo-Regular-webfont.woff') format('woff'),
+         url('Arimo-Regular-webfont.ttf') format('truetype'),
+         url('Arimo-Regular-webfont.svg#arimoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gothampro_bold';
+    src: url('GothamPro-Bold.eot');
+    src: url('GothamPro-Bold.eot?#iefix') format('embedded-opentype'),
+         url('GothamPro-Bold.woff2') format('woff2'),
+         url('GothamPro-Bold.woff') format('woff'),
+         url('GothamPro-Bold.ttf') format('truetype'),
+         url('GothamPro-Bold.svg#gothampro_bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'arimobold';
+    src: url('arimo.bold.eot');
+    src: url('arimo.bold.eot?#iefix') format('embedded-opentype'),
+         url('arimo.bold.woff2') format('woff2'),
+         url('arimo.bold.woff') format('woff'),
+         url('arimo.bold.ttf') format('truetype'),
+         url('arimo.bold.svg#arimobolds') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+

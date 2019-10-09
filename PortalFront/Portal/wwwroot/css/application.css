@@ -1,0 +1,55 @@
+.banner {
+    max-width: 900px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+}
+
+.info {
+    background-color: rgb(242,248,252);
+}
+
+.holder {
+    background-color: #FBFCFC;
+}
+
+p {
+    text-indent: 20px;
+}
+
+
+
+.link {
+    color: #0173c1 !important;
+    cursor: pointer;
+}
+
+    .link:hover {
+        text-decoration: underline;
+    }
+
+.in {
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;
+}
+
+.out {
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;
+}
+
+
+
+input[type='checkbox'] {
+    width: 20px;
+    height: 20px;
+}
+
+.invalid-input {
+    border-color: #dc3545;
+}
+
+    .invalid-input:focus {
+        border-color: #dc3545;
+        box-shadow: 0 0 0 0.2rem rgba(220,53,69,.25);
+    }

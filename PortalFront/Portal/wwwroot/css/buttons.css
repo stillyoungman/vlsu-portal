@@ -1,0 +1,24 @@
+﻿.btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 20px;
+    border: none;
+    outline: none;
+}
+
+.btn-blue {
+    background-color: #023e83;
+    color: white;
+}
+
+.btn-blue:active {
+    opacity: 0.8
+}
+
+.btn-grey {
+    background-color: #b1b1b1;
+    color: white;
+}

@@ -1,0 +1,85 @@
+﻿    @model Portal.Models.IPlansVM
+
+@{
+    ViewData["Title"] = "Список направлений подготовки";
+    var titleObj = new PlanEntry(null,null);
+}
+
+<div>
+    <div class="container">
+        <ul class="responsive-table">
+            <li class="table-header sticky" style="text-transform: none">
+                <div class="col col-1 flex-font r-space-10">@Html.DisplayNameFor(m => titleObj.Title.Code)</div>
+                <div class="col col-2">@Html.DisplayNameFor(m => titleObj.Title.Full)</div>
+                <div class="col col-4 flex-font">@Html.DisplayNameFor(m => titleObj.ApplicationsCount)</div>
+                <div class="col col-4 flex-font">@Html.DisplayNameFor(m => titleObj.GrantSpots)</div>
+            </li>
+            @foreach (var i in Model.Institutes)
+            {
+                if (i.HasMaster || i.HasBachelor)
+                {
+                    <li class="table-row h table-header">
+                        <h3>@i.Name</h3>
+                    </li>
+                    if (i.HasBachelor)
+                    {
+                        foreach (var p in i.Bachelor)
+                        {
+                            <a href="enrollees/@(p.Id)">
+                                <li class="table-row">
+                                    <div class="col col-1 r-space-10" data-label="Шифр">
+                                        @p.Title.Code
+                                    </div>
+                                    <div class="col col-2 flex-font" data-label="Направление">
+                                        @p.Title.Full
+                                    </div>
+                                    <div class="col col-4" data-label="Кол-во заявлений">
+                                        @p.ApplicationsCount
+                                    </div>
+                                    <div class="col col-4" data-label="Бюджетные места">
+                                        @p.GrantSpots
+                                    </div>
+                                </li>
+                            </a>
+                        }
+                    }
+                    if (i.HasMaster)
+                    {
+                        <li class="table-row h table-header-s">
+                            <h3>Магистратура</h3>
+                        </li>
+                        foreach (var p in i.Master)
+                        {
+                            <a href="enrollees/@(p.Id)">
+                                <li class="table-row">
+                                    <div class="col col-1 r-space-10" data-label="Шифр">
+                                        @p.Title.Code
+                                    </div>
+                                    <div class="col col-2 flex-font" data-label="Направление">
+                                        @p.Title.Full
+                                    </div>
+                                    <div class="col col-4" data-label="Кол-во заявлений">
+                                        @p.ApplicationsCount
+                                    </div>
+                                    <div class="col col-4" data-label="Бюджетные места">
+                                        @p.GrantSpots
+                                    </div>
+                                </li>
+                            </a>
+                        }
+                    }
+                }
+
+            }
+        </ul>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="css/list.css" type="text/css" charset="utf-8" />
+}
+
+@section Scripts {
+    <script>
+    </script>
+}

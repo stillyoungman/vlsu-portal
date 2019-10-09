@@ -1,0 +1,16 @@
+.box-404 {
+    font-family: 'IBM Plex Sans';
+    margin-top: 20px;
+}
+
+.box-404 .num-404 {
+    font-size: 4em;
+}
+
+.box-404 .mess-404 {
+    font-size: 1.4em;
+}
+
+img {
+    width: 100%;
+}

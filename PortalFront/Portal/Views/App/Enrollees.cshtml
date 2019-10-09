@@ -1,0 +1,379 @@
+﻿@model Portal.Models.IPlanEnrolleesVM
+
+@{
+    ViewData["Title"] = $"{Model.PlanEntry.Title.Code}. {Model.PlanEntry.Title.Name}. {Model.PlanEntry.Title.Degree}";
+    var exams = Model.PlanEntry.Exams;
+    var index = 1;
+
+    //sort
+    //doc type
+}
+
+<h3 align="center" class="s-header">@Model.PlanEntry.Title.Full</h3>
+
+<div class="top-box">
+    <div class="legend" style="display:inline-block;">
+        <div style="margin:5px 20px; display:inline-block;">
+            <p style="padding: 6px 8px;" class="enrolled-box green">
+                Зачислен(а) на данное направление
+            </p>
+
+        </div>
+        <br />
+        <div style="margin:5px 20px; display:inline-block;">
+            <p style="padding: 6px 8px;" class="enrolled-box blue">
+                Зачислен(а) на другое направление
+            </p>
+        </div>
+    </div>
+    <div class="spots-box">
+        @{ 
+            var fs = @Model.PlanEntry.FinSources;
+        }
+        <p class="spot-text"><strong>БЮДЖЕТНЫХ МЕСТ:</strong></p>
+        <p class="spot-text">ВСЕГО - <strong>@Model.PlanEntry.GrantSpots</strong>, в том числе:</p>
+        <p class="spot-text">целевой предприятия и организации - <strong>@fs.GetSpotsByFin(FinancingType.Enterprise)</strong></p>
+        <p class="spot-text">целевой ОПК - <strong>@fs.GetSpotsByFin(FinancingType.EnterpriseDIC)</strong></p>
+        <p class="spot-text">целевой Моногорода - <strong>@fs.GetSpotsByFin(FinancingType.EnterpriseMono)</strong></p>
+        <p class="spot-text">квота для особой категории граждан - <strong>@fs.GetSpotsByFin(FinancingType.Special)</strong></p>
+    </div>
+    <div class="legend">
+        <input id="highlight-source" class="styled-input slim-input" placeholder="Фамилия" type="text" name="light-input" value="" />
+        <button onclick="highlight()" class="btn btn-blue">Выделить абитуриента</button>
+    </div>
+    <button onclick="toTop()" id="to-top">▲</button>
+</div>
+
+<div class="table-wrap">
+
+    <table id="tbl" class="table table-striped sticky-header">
+        <thead id="sticky-head">
+            <tr>
+                <th class="_cfm">№</th>
+                <th class="_cfm">Категория зачисления</th>
+                <th class="_cfm doc">Документ</th>
+                <th class="exam score _cfm">Сумма баллов</th>
+                <th class="_cfm">Фамилия, имя, отчество</th>
+                @foreach (var exam in Model.PlanEntry.Exams)
+                {
+                    if (exam.ShortName == null)
+                    {
+                        <th class="exam small-font exam-marker">@exam.Name</th>
+                    }
+                    else
+                    {
+                        <th class="exam exam-marker">
+                            <span class="tooltip" style="color:inherit">
+                                @exam.ShortName
+                                <span class="tooltip-text" style="left: 125%">@exam.Name</span>
+                            </span>
+                        </th>
+                    }
+
+                }
+
+                <th class="ach">Баллы за инд. достижения</th>
+                <th class="specs-marker">Заявленные напрвления (специальности)</th>
+                <th class="dorm small-font priority">Приоритетное право</th>
+                <th class="spot-type">Претендует на места</th>
+                <th class="_cfm">Согласие о зачислении</th>
+            </tr>
+        </thead>
+        @{ 
+            IPlan enrolleePlan;
+        }
+        <tbody>
+            @foreach (var enrollee in Model.Enrollees)
+            {
+                enrolleePlan = enrollee.GetPlan(Model.PlanEntry.Id);
+                <tr id="row-@index">
+                    <td class="_cfm">@index</td>
+                    <td class="_cfm">@(enrolleePlan.EnrollCategory)</td>
+                    <td class="_cfm doc">@enrollee.Doc.StringValue()</td>
+                    <td class="exam score _cfm">@enrolleePlan.Score</td>
+
+                    <td class="full-name _cfm">
+                        @if (enrollee.EnrolledTo == Model.PlanEntry.Id)
+                        {
+                            <p class="enrolled-box green">
+                                <span id="name-@index" class="name-long">@enrollee.FullName</span>
+                            </p>
+                        }
+                        else if (enrollee.EnrolledTo != 0)
+                        {
+                            <p class="enrolled-box blue">
+                                <span id="name-@index" class="name-long">@enrollee.FullName</span>
+                            </p>
+                        }
+                        else
+                        {
+                            <p>
+                                <span id="name-@index" class="name-long">@enrollee.FullName</span>
+                            </p>
+                        }
+                    </td>
+
+                    @foreach (var exam in Model.PlanEntry.Exams)
+                    {
+                        var mark = enrollee.GetExamMark(exam.Id, Model.PlanEntry.Id);
+                        var min = Model.PlanEntry.Exams.Single(e => e.Id == exam.Id).MinMark;
+                        <td class="exam exam-marker">
+                            @if (mark < min)
+                            {
+                                <div class="tooltip bad-mark">
+                                    @mark
+                                    <span class="tooltip-text">
+                                        Ниже минимального бала (@min)
+                                    </span>
+                                </div>
+                            }
+                            else
+                            {
+                                @mark
+                            }
+                        </td>
+                    }
+
+                    <td class="ach">
+                        @if (enrolleePlan.AchScore > 0)
+                        {
+                            <div class="tooltip tooltip-score-box">
+                                @enrolleePlan.AchScore
+                                <span class="tooltip-text">
+                                    @foreach (var model in enrolleePlan.AchViewModels)
+                                    {
+                                        @($"{model.Item1} - {model.Item2}")
+                                        <br />
+                                    }
+                                </span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="tooltip-score-box">
+                                0
+                            </div>
+
+                        }
+
+                    </td>
+
+                    <td class="specs specs-marker">
+                        @{
+                            var plans = enrollee.Plans;
+                            if (plans.Count() < 4)
+                            {
+                                for (var i = 0; i < plans.Count(); i++)
+                                {
+                                    <span class="tooltip">
+                                        @*add href if not refer to itself*@
+                                        <a @if (plans.ElementAt(i).PlanEntry.Id != Model.PlanEntry.Id) { @Html.Raw($"href=\"/enrollees/{plans.ElementAt(i).PlanEntry.Id}\"") ; }>
+                                            @plans.ElementAt(i).Priority) @plans.ElementAt(i).PlanEntry.Title.Code
+                                        </a>
+                                        <span class="tooltip-text">@Html.Raw(plans.ElementAt(i).PlanEntry.Title.Short + " " + plans.ElementAt(i).PlanEntry.Title.Degree)</span>
+                                    </span>
+                                    <br />
+                                }
+                            }
+                            else
+                            {
+                                for (var i = 0; i < plans.Count(); i += 2)
+                                {
+                                    var first = plans.ElementAt(i);
+                                    var second = plans.Count() > i + 1 ? plans.ElementAt(i + 1) : null;
+
+                                    <span class="tooltip">
+                                        <a @if (first.PlanEntry.Id != Model.PlanEntry.Id) { @Html.Raw($"href=\"/enrollees/{first.PlanEntry.Id}\"") ; }>
+                                            @first.Priority) @first.PlanEntry.Title.Code
+                                        </a> @Html.Raw("&nbsp;&nbsp;")
+                                        <span class="tooltip-text">
+                                            @Html.Raw(first.PlanEntry.Title.Short + " " + first.PlanEntry.Title.Degree)
+                                        </span>
+                                    </span>
+
+                                    if (second != null)
+                                    {
+                                        <span class="tooltip">
+                                            <a @if (second.PlanEntry.Id != Model.PlanEntry.Id) { @Html.Raw($"href=\"/enrollees/{second.PlanEntry.Id}\"") ; }>@second.Priority) @second.PlanEntry.Title.Code</a> <span class="tooltip-text">
+                                                @Html.Raw(second.PlanEntry.Title.Short + " " + second.PlanEntry.Title.Degree)
+                                            </span>
+                                        </span>
+                                    }
+
+                                    <br />
+
+                                }
+
+                            }
+                        }
+                    </td>
+
+                    <td class="dorm priority">@(enrollee.KindPrivilege == "ППр" ? "Да" : "Нет")</td>
+
+                    <td class="spot-type">
+                        @if (enrolleePlan.IsGovernmentSponsored)
+                        {
+                            <p style="margin: 2px auto;">Бюджет</p>
+                        }
+
+                        @if (enrolleePlan.IsSelfSponsored)
+                        {
+                            <p style="margin: 3px auto;">Внебюджет</p>
+                        }
+                    </td>
+
+                    <td class="_cfm">
+                        @if (enrollee.ApprovedTo == null || enrollee.ApprovedTo.Item1 != Model.PlanEntry.Id)
+                        {
+                            @("Нет")
+                        }
+                        else if (enrollee.ApprovedTo.Item2 == FinancingType.Contract)
+                        {
+                            @("Да (Внебюджет)")
+                        }
+                        else
+                        {
+                            @("Да (Бюджет)")
+                        }
+
+                    </td>
+                    @{ index++; }
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+</div>
+
+@section Scripts {
+    <script src="~/js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/floatthead/2.1.3/jquery.floatThead.js"></script>
+    <script id="sticky">
+        var isIE = @Html.Raw("/*@cc_on!@*/false") || !!document.documentMode;
+
+        if (!isIE) {
+            //add to table head sticky style
+            var wrap = $('.table-wrap').first();
+            $(document).ready(function () {
+                $("#tbl").floatThead({
+                    position: 'fixed',
+                    responsiveContainer: function () {
+                        return wrap;
+                    }
+                });
+            });
+
+            //because overflow-x: hidden; property hides toolbar
+            setTimeout(function () {
+                if (innerWidth < 1100) return; //dont remove for phones and tablet
+
+                document.getElementsByClassName('table-wrap')[0].classList.remove('table-wrap')
+
+                var stickyConainer = document.getElementsByClassName('floatThead-container')[0]
+                if (stickyConainer) {
+                    stickyConainer.style.removeProperty('overflow-x');
+                }
+            }, 1000)
+        }
+    </script>
+    <script>
+
+        window.onscroll = handleScroll;
+
+        function handleScroll() {
+            if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+                document.getElementById("to-top").style.display = "block";
+            } else {
+                document.getElementById("to-top").style.display = "none";
+            }
+        }
+
+        function toTop() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+    <script>
+
+        function highlight() {
+            var highlighted = document.getElementsByClassName('highlighted');
+
+            while (highlighted[0]) {
+                highlighted[0].classList.remove('highlighted')
+            }
+
+            var pattern = document.getElementById('highlight-source').value.trim();
+            if (!pattern || (/[a-zA-Z0-9]/.test(pattern))) return;
+
+            pattern = pattern.toLowerCase()
+
+            var names = document.getElementsByClassName('name-long');
+            for (var i = 0; i < names.length; i++) {
+                if (names[i].innerHTML.toLowerCase().indexOf(pattern) >= 0) {
+                    var id = 'row-' + names[i].id.split('-')[1]//name-3
+                    document.getElementById(id).classList.add('highlighted')
+                }
+            }
+
+        }
+
+        document.getElementById('highlight-source').addEventListener('keyup', function (e) {
+            if (e.keyCode == 13) {
+                highlight()
+            }
+        })
+
+    </script>
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/enrollees.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="~/css/tooltip.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="~/css/styled-input.css">
+    <link rel="stylesheet" href="~/css/buttons.css">
+
+    <style>
+        #to-top {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #AEB6BF;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 18px;
+            opacity: 0.7
+        }
+
+            #to-top:hover {
+                opacity: 0.9
+            }
+
+            #to-top:active {
+                opacity: 1
+            }
+    </style>
+    <style>
+        
+    </style>
+    <style>
+        .slim-input {
+            padding: 0;
+            padding-left: 10px;
+        }
+
+        .highlighted {
+            background-color: #D6EAF8;
+        }
+
+        .table-wrap {
+            overflow: auto
+        }
+    </style>
+}

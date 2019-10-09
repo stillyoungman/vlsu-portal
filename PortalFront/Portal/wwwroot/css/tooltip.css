@@ -1,0 +1,47 @@
+﻿.tooltip {
+    position: relative;
+    color: #5a5f73;
+}
+
+.tooltip .tooltip-text {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1em;
+    line-height: 1.5em;
+    visibility: hidden;
+    /*width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;*/
+    background-color: #5a5f73;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1002;
+    bottom: 125%;
+    left: 30%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: .3s;
+    transform: translate3d(0px, 20px, 0px);
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 0.95;
+    transform: translate3d(0px, 0px, 0px);
+}
+
+.tooltip-text {
+    pointer-events: none;
+    max-width: 175px;
+    width: max-content;
+    width: -moz-max-content;
+    width: -webkit-max-content;
+}
+
+.tooltip-score-box {
+    width: 30%;
+    padding: 10px;
+    margin: 0 auto;
+}

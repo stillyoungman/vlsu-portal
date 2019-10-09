@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="~/fonts/fonts.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="~/fonts/fonts-classes.css" type="text/css" charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Arimo:600|IBM+Plex+Sans:400,500,600,700|Istok+Web|Montserrat|Noto+Sans+SC|Poiret+One|Roboto"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/base.css" type="text/css" charset="utf-8" />
+    @RenderSection("Styles", required: false)
+    
+</head>
+
+<body>
+    <div class="page">
+        <div class="header wrap">
+            <h1>
+                Владимирский Государственный Университет
+                <span> Портал приёмной комиссии </span>
+            </h1>
+        </div>
+        <div class="link-list">
+        
+            @await Component.InvokeAsync("TopButtons")
+                     
+        </div>
+        
+        @RenderBody()
+    </div>
+
+    
+</body>
+
+@RenderSection("Scripts", required: false)
+
+</html>

@@ -1,0 +1,34 @@
+﻿.styled-input {
+    width: 220px;
+    padding: .3rem 0.7rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin: 10px 20px;
+}
+
+.styled-input:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25)
+}
+
+    .styled-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #ABB2B9;
+        opacity: 1; /* Firefox */
+    }
+
+    .styled-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: #ABB2B9;
+    }
+
+    .styled-input::-ms-input-placeholder { /* Microsoft Edge */
+        color: #ABB2B9;
+    }

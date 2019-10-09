@@ -1,0 +1,158 @@
+html,
+body {
+    height: unset;
+}
+
+h2 {
+    font-size: 26px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+    h2 small {
+        font-size: 0.5em;
+    }
+
+li.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+li.table-row.h {
+    padding: 10px 30px;
+    cursor: default;
+}
+
+li.table-row h3 {
+    margin: 0;
+}
+
+.t {
+    box-shadow: none;
+    margin: 0;
+    font-size: 13px;
+}
+
+.r-space-10 {
+    margin-right: 10px;
+}
+
+.l-space-10 {
+    margin-left: 10px;
+}
+
+.responsive-table .sticky {
+    padding: 5px 25px;
+    border-radius: 5px;
+}
+
+.responsive-table li {
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.responsive-table .table-header {
+    text-transform: uppercase;
+    background-color: #dcdcdc;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+}
+
+.responsive-table .table-row {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 9px 0px rgb(204, 209, 209);
+    cursor: pointer;
+}
+
+.responsive-table .table-header-s {
+    box-shadow: none;
+    margin: 0;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.responsive-table .col-1 {
+    flex-basis: 10%;
+}
+
+.responsive-table .col-2 {
+    flex-basis: 70%;
+}
+
+.responsive-table .col-3 {
+    flex-basis: 10%;
+    text-align: center;
+}
+
+.responsive-table .col-4 {
+    flex-basis: 10%;
+    text-align: center;
+}
+
+li.table-row.h {
+    box-shadow: none;
+}
+
+@media all and (max-width: 767px) {
+    .table-header:first-child {
+        display: none;
+    }
+
+    .responsive-table {
+        padding: 0;
+    }
+
+    .table-row {
+        max-width: 540px;
+        margin: 20px auto;
+    }
+
+        .responsive-table li {
+            display: block;
+        }
+
+        .responsive-table .col-4 {
+            text-align: unset;
+        }
+
+        .responsive-table .col {
+            align-items: center;
+            /*display: flex;*/
+            padding: 6px 0;
+        }
+
+            .responsive-table .col:before {
+                color: #6c7a89;
+                padding-right: 10px;
+                content: attr(data-label);
+                flex-basis: 50%;
+                text-align: right;
+            }
+
+    
+}
+
+
+@media all and (max-width: 540px) {
+
+    .responsive-table .col {
+        padding: 5px 0;
+    }
+}
+
+@media all and (max-width: 330px) {
+    .responsive-table {
+        font-size: 13px;
+    }
+
+    .responsive-table .col {
+        padding: 3px 0;
+    }
+
+    
+}

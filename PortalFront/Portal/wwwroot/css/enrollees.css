@@ -1,0 +1,164 @@
+table {
+    border-collapse: collapse;
+    background: white;
+    border-radius: 6px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 10px auto 40px auto;
+    position: relative;
+    font-size: 12px;
+}
+table * {
+  position: relative;
+}
+table td, table th {
+  padding-left: 8px;
+}
+table thead tr {
+  height: 60px;
+  background: rgb(242,248,252); /*#FFED86*/
+  font-size: 12px;
+}
+table tbody tr {
+  height: 48px;
+  border-bottom: 1px solid #E3F1D5;
+}
+table tbody tr:last-child {
+  border: 0;
+}
+table td, table th {
+  text-align: left;
+}
+table td.l, table th.l {
+  text-align: right;
+}
+table td.c, table th.c {
+  text-align: center;
+}
+table td.r, table th.r {
+  text-align: center;
+}
+
+/* custom */
+td.specs {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    min-width: 140px;
+}
+
+td.full-name {
+    padding-right: 10px;
+}
+
+.exam {
+    text-align: center;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+
+
+th.dorm {
+    max-width: 90px;
+    padding: 0;
+}
+td.dorm {
+    padding: 0;
+    text-align: center;
+}
+.small-font {
+    font-size: 10px;
+    width: 80px;
+}
+
+.enrolled-box {
+    margin: 0;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.green {
+    background-color: #d1f5a9;
+}
+
+.blue {
+    background-color: #beebff;
+}
+
+.legend {
+    border-radius: 7px;
+    /*background-color: #eaf2f9;*/
+    padding: 5px;
+    max-width: 1200px;
+    /*margin: 0 auto;*/
+}
+
+    .legend input {
+        margin: 5px 20px;
+        display: inline-block;
+    }
+
+.spot-text {
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+}
+
+.spots-box {
+    /*background-color: cadetblue;*/
+    width: 250px;
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 25px;
+    padding: 7px;
+    border-radius: 6px;
+    border: 1px solid #D6DBDF;
+}
+
+.top-box {
+    margin: 0 75px;
+}
+
+
+/*override base*/
+.page {
+    overflow-x: auto;
+}
+html, body {
+    height: unset;
+}
+
+blockquote {
+  color: white;
+  text-align: center;
+}
+
+.name-short {
+    display: none;
+}
+
+.bad-mark {
+    background-color: #ff7979;
+    padding: 1px 4px;
+    border-radius: 3px;
+    color: #FDFEFE !important;
+    max-width: 50%;
+    margin: auto;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+}
+
+@media all and (max-width: 1200px) {
+    .s-header {
+        padding: 0 40px;
+    }
+    .page {
+        padding: 0;
+    }
+    .top-box {
+        margin: 0;
+    }
+}

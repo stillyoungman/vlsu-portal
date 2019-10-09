@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Портал приемной комиссии ВлГУ";
+}
+
+
+
+<h3 align="center" class="s-header">Рейтинговые списки подавших заявление</h3>
+        <div class="content-container">
+
+            <div class="card1 center">
+                <a class="list-link center" href="courses?type=full-time">
+                    Очная форма
+                </a>
+            </div>
+            <div class="card1 center">
+                <a class="list-link center" href="courses?type=extramural">
+                    Заочная форма
+                </a>
+            </div>
+            <div class="card1 center">
+                <a class="list-link center" href="courses?type=remote">
+                    Заочная дистанционная форма
+                </a>
+            </div>
+            <div class="card1 center">
+                <a class="list-link center" href="courses?type=part-time">
+                    Очно-заочная форма
+                </a>
+            </div>
+        </div>
+
+@section Styles {
+    <link rel="stylesheet" href="css/index.css" type="text/css" charset="utf-8" />
+}
+
+@section Scripts {
+    <script>
+    //turn off toMain link
+        window.onload = function () {
+            document.getElementById("to-main")
+                .addEventListener("click", function (e) {
+                    e.preventDefault();
+                });
+        }
+    </script>
+}

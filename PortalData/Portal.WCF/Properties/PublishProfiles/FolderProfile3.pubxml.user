@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\hq.user\Desktop\PortalDataService</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Microsoft.AspNetCore.Mvc.Core.dll">
+      <publishTime>03/04/2019 08:00:14</publishTime>
+    </File>
+    <File Include="bin/netstandard.dll">
+      <publishTime>01/21/2019 16:20:52</publishTime>
+    </File>
+    <File Include="bin/Portal.DBLayer.dll">
+      <publishTime>05/22/2019 15:51:18</publishTime>
+    </File>
+    <File Include="bin/Portal.DBLayer.pdb">
+      <publishTime>05/22/2019 15:51:18</publishTime>
+    </File>
+    <File Include="bin/Portal.Models.dll">
+      <publishTime>05/22/2019 15:47:47</publishTime>
+    </File>
+    <File Include="bin/Portal.Models.pdb">
+      <publishTime>05/22/2019 15:47:47</publishTime>
+    </File>
+    <File Include="bin/Portal.ServiceContract.dll">
+      <publishTime>05/22/2019 15:51:18</publishTime>
+    </File>
+    <File Include="bin/Portal.ServiceContract.pdb">
+      <publishTime>05/22/2019 15:51:18</publishTime>
+    </File>
+    <File Include="bin/Portal.WCF.dll">
+      <publishTime>05/22/2019 15:51:19</publishTime>
+    </File>
+    <File Include="bin/Portal.WCF.pdb">
+      <publishTime>05/22/2019 15:51:19</publishTime>
+    </File>
+    <File Include="PortalDataService.svc">
+      <publishTime>05/13/2019 18:41:24</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>05/22/2019 15:51:19</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

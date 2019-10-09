@@ -1,0 +1,173 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+    padding-top: 5px;
+    /*font-family: "IBM Plex Sans", sans-serif;*/
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a,
+a:visited {
+  color: inherit;
+}
+
+a:active {
+  color: #85929e;
+}
+
+.invis {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.column {
+  flex-direction: column;
+}
+
+.page {
+    padding: 20px;
+    position: relative;
+    max-width: 1400px;
+    min-height: 100%;
+    margin: 10px auto 50px auto;
+    border-radius: 15px;
+    -webkit-box-shadow: 0 0 50px #ccc;
+    box-shadow: 0 0 50px #ccc;
+    height: 90%;
+    overflow-x: hidden;
+}
+
+.header.wrap {
+    width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    
+    margin: 0 auto;
+    user-select: none;
+    display: block;
+    margin-bottom: 20px;
+    padding: 0px 10%;
+    margin-top: 15px;
+}
+.header h1 {
+  padding-top: 4px;
+  color: #000;
+  font: 25px/30px "gothampro_bold", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.06em;
+  margin: 0;
+}
+
+
+
+.s-header {
+    max-width: 900px;
+    margin: 15px auto;
+    padding-left: 40px;
+    display: block;
+    /*font: 18px "arimobold", sans-serif;*/
+    letter-spacing: normal;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.header h1 span {
+  display: block;
+  font: 18px "arimobold", sans-serif;
+  letter-spacing: normal;
+  font-weight: 600;
+}
+.logo img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.link-list {
+    width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    margin: 10px auto;
+    /*padding: 0 50px;*/
+}
+.link-list a {
+  display: inline-block;
+  padding: 0 20px;
+  line-height: 40px;
+  text-align: center;
+  /*border: 1px solid #d4d4d4;*/
+  border-radius: 5px;
+  margin: 10px 8px 20px 0;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  /* -webkit-box-shadow: 0 16px 16px 0 rgba(131, 131, 131, 0.2); */
+  /* box-shadow: 0 16px 16px 0 rgba(139, 139, 139, 0.2); */
+  font-family: "IBM Plex Sans", sans-serif;
+}
+.link-list a:visited {
+  color: #000000;
+}
+
+.card {
+    background: white;
+    text-decoration: none;
+    color: #444;
+    box-shadow: 0 2px 5px #D6DBDF;
+    position: relative;
+    top: 0;
+    transition: all 0.13s ease-in;
+}
+    .card:hover {
+        top: -2px;
+        box-shadow: 0 3px 5px #D6DBDF;
+    }
+.card:active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  top: 0;
+}
+.content-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.container {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.header.wrap {
+    
+}
+
+@media all and (max-width: 660px) {
+    .link-list a {
+        display: block;
+    }
+}
+
+@media all and (max-width: 540px) {
+    
+}
+

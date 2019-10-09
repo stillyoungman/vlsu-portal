@@ -1,0 +1,163 @@
+﻿@{
+    ViewData["Title"] = "Онлайн регистрация";
+}
+
+<h3 align="center" class="s-header">Электронная регистрация</h3>
+<div class="stage-area" id="page-0">
+    <div class="container banner info">
+        <p style="user-select: text;">
+            Ваше заявление успешно создано, номер заявления <strong>@ViewData["applicationId"]</strong>
+        </p>
+
+    </div>
+</div>
+
+
+@*  не удалять section Scripts *@
+@section Scripts{
+    <script>
+
+    </script>
+}
+
+@section Styles{
+    <link rel="stylesheet" href="css/application.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+    <style>
+        .pointer {
+            cursor: pointer;
+        }
+
+        .exams-container {
+            position: relative;
+        }
+
+        .label-center {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .column {
+            /*border: 1px solid black;*/
+            display: inline-block;
+            margin: 10px 20px;
+            min-width: 220px;
+            padding: .3rem 0.7rem;
+        }
+
+        .pretty-h4 {
+            font-weight: 600;
+            margin: 0;
+            margin-top: 10px;
+        }
+    </style>
+    <style id="buttons">
+        .button-wrap {
+            margin-left: 20px;
+            margin-top: 5px;
+            position: relative;
+            height: 40px;
+        }
+
+        .clear-button {
+            padding: 5px;
+            border: none;
+            margin: 10px;
+            height: 30px;
+            font-size: 12px;
+            position: absolute;
+            top: 17%;
+            transform: translateY(-50%);
+        }
+
+            .clear-button:focus {
+                outline: none
+            }
+
+        .plus-button {
+            border: 2px solid lightgrey;
+            background-color: #fff;
+            font-size: 16px;
+            height: 2.5em;
+            width: 2.5em;
+            border-radius: 999px;
+            position: relative;
+            cursor: pointer;
+        }
+
+            .plus-button:after, .plus-button:before {
+                content: "";
+                display: block;
+                background-color: grey;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .plus-button:before {
+                height: 1em;
+                width: 0.2em;
+            }
+
+            .plus-button:after {
+                height: 0.2em;
+                width: 1em;
+            }
+
+        .plus-button--small {
+            font-size: 12px;
+        }
+
+        .plus-button--large {
+            font-size: 22px;
+        }
+
+        .plus-button:focus {
+            outline: none;
+        }
+    </style>
+    <style id="custom-select">
+        select {
+            margin: 10px 20px;
+            max-width: 900px;
+            padding: 8px 20px 8px 10px;
+            font-size: 12px;
+            border: 1px solid #ccc;
+            height: 34px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            border-radius: 4px;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        }
+
+            select:focus {
+                outline: none;
+            }
+
+        .smooth-appearing {
+            transition: opacity 0.5s ease-out;
+        }
+
+        .invis-select {
+            opacity: 0;
+        }
+
+        .selected {
+            background: transparent;
+            color: black;
+        }
+    </style>
+    <style id="application">
+        @@media all and (max-width: 760px) {
+            .application {
+                display: none;
+            }
+            /*.not-supported {
+
+            }*/
+        }
+    </style>
+}
